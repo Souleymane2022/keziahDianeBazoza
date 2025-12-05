@@ -1,13 +1,16 @@
 import { Link } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Menu, X, UserCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import LanguageToggle from "./language-toggle";
+import { useLanguage } from "@/lib/language-context";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,10 +21,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Expertise", href: "#expertise" },
-    { name: "Impact", href: "#impact" },
-    { name: "Contact", href: "#contact" },
+    { name: t.nav.about, href: "#about" },
+    { name: t.nav.expertise, href: "#expertise" },
+    { name: t.nav.impact, href: "#impact" },
+    { name: t.nav.news, href: "#news" },
+    { name: t.nav.contact, href: "#contact" },
   ];
 
   const scrollToSection = (id: string) => {
@@ -43,13 +47,13 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <Link href="/">
-          <a className="text-xl md:text-2xl font-serif font-bold text-primary tracking-tight">
+          <a className="text-xl md:text-2xl font-serif font-bold text-primary tracking-tight flex items-center gap-2">
             Diane K. Bazozah
           </a>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <button
               key={link.name}
@@ -59,16 +63,28 @@ export default function Navbar() {
               {link.name}
             </button>
           ))}
+          
+          <div className="h-4 w-[1px] bg-gray-300 mx-2" />
+          
+          <LanguageToggle />
+
+          <Link href="/admin">
+            <a className="text-gray-400 hover:text-primary transition-colors" title={t.nav.admin}>
+              <UserCircle className="w-5 h-5" />
+            </a>
+          </Link>
+          
           <Button 
-            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-medium rounded-none px-6"
+            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-medium rounded-none px-6 ml-2"
             onClick={() => scrollToSection('#contact')}
           >
-            Get in Touch
+            {t.nav.cta}
           </Button>
         </div>
 
         {/* Mobile Nav */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-4">
+          <LanguageToggle />
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -86,11 +102,20 @@ export default function Navbar() {
                     {link.name}
                   </button>
                 ))}
+                
+                <div className="flex gap-4 mt-4 border-t pt-6">
+                  <Link href="/admin">
+                    <a className="text-sm font-medium text-gray-500 hover:text-primary flex items-center gap-2">
+                       <UserCircle className="w-4 h-4" /> Admin Login
+                    </a>
+                  </Link>
+                </div>
+
                 <Button 
                   className="bg-secondary hover:bg-secondary/90 text-secondary-foreground w-full mt-4"
                   onClick={() => scrollToSection('#contact')}
                 >
-                  Get in Touch
+                  {t.nav.cta}
                 </Button>
               </div>
             </SheetContent>

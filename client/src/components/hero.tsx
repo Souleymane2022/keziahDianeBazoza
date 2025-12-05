@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/lib/language-context";
 import heroBg from "@assets/generated_images/abstract_digital_map_of_africa_background.png";
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Image with Overlay */}
@@ -25,7 +28,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block py-1 px-3 border border-secondary/50 rounded-full text-secondary text-xs md:text-sm font-semibold tracking-widest uppercase mb-6 bg-secondary/10 backdrop-blur-sm">
-              Regional Coordinator • East Africa
+              {t.hero.role}
             </span>
           </motion.div>
 
@@ -35,8 +38,8 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-tight mb-6"
           >
-            Driving Innovation & <br />
-            <span className="text-secondary">Youth Empowerment</span>
+            {t.hero.title} <br />
+            <span className="text-secondary">{t.hero.titleHighlight}</span>
           </motion.h1>
 
           <motion.p
@@ -45,7 +48,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed font-light"
           >
-            Pioneering digital transformation and strengthening entrepreneurship ecosystems across Africa for a sustainable future.
+            {t.hero.subtitle}
           </motion.p>
 
           <motion.div
@@ -59,7 +62,7 @@ export default function Hero() {
               className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8 h-14 text-base rounded-none min-w-[200px]"
               onClick={() => document.querySelector('#expertise')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Discover My Work
+              {t.hero.ctaPrimary}
             </Button>
             <Button
               variant="outline"
@@ -67,7 +70,7 @@ export default function Hero() {
               className="border-white/30 text-white hover:bg-white/10 hover:text-white px-8 h-14 text-base rounded-none min-w-[200px] backdrop-blur-sm"
               onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Contact Me <ArrowRight className="ml-2 w-4 h-4" />
+              {t.hero.ctaSecondary} <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </motion.div>
         </div>

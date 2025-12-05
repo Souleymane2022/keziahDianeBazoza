@@ -1,51 +1,54 @@
 import { motion } from "framer-motion";
 import { Users, Briefcase, Globe, Lightbulb, HandHeart, Network } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-const expertiseAreas = [
-  {
-    title: "Youth Development",
-    description: "Designing and implementing programs that equip young Africans with the skills needed for the digital age.",
-    icon: Users,
-  },
-  {
-    title: "SME Support",
-    description: "Strengthening small and medium enterprises through capacity building and access to digital tools.",
-    icon: Briefcase,
-  },
-  {
-    title: "Regional Coordination",
-    description: "Harmonizing policies and initiatives across East Africa to create a unified digital market.",
-    icon: Globe,
-  },
-  {
-    title: "Digital Innovation",
-    description: "Promoting ecosystems where technology-driven solutions can thrive and scale.",
-    icon: Lightbulb,
-  },
-  {
-    title: "Women's Inclusion",
-    description: "Ensuring gender equity in the tech sector by creating targeted opportunities for women.",
-    icon: HandHeart,
-  },
-  {
-    title: "Strategic Partnerships",
-    description: "Facilitating collaboration between governments, private sector, and development partners.",
-    icon: Network,
-  },
-];
+import { useLanguage } from "@/lib/language-context";
 
 export default function Impact() {
+  const { t } = useLanguage();
+
+  const expertiseAreas = [
+    {
+      title: t.impact.areas.youth.title,
+      description: t.impact.areas.youth.desc,
+      icon: Users,
+    },
+    {
+      title: t.impact.areas.sme.title,
+      description: t.impact.areas.sme.desc,
+      icon: Briefcase,
+    },
+    {
+      title: t.impact.areas.regional.title,
+      description: t.impact.areas.regional.desc,
+      icon: Globe,
+    },
+    {
+      title: t.impact.areas.innovation.title,
+      description: t.impact.areas.innovation.desc,
+      icon: Lightbulb,
+    },
+    {
+      title: t.impact.areas.women.title,
+      description: t.impact.areas.women.desc,
+      icon: HandHeart,
+    },
+    {
+      title: t.impact.areas.partnerships.title,
+      description: t.impact.areas.partnerships.desc,
+      icon: Network,
+    },
+  ];
+
   return (
     <section id="expertise" className="py-24 bg-gray-50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h4 className="text-secondary font-bold tracking-widest uppercase text-sm mb-3">My Expertise</h4>
+          <h4 className="text-secondary font-bold tracking-widest uppercase text-sm mb-3">{t.impact.label}</h4>
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary mb-6">
-            Building a Resilient <br /> Digital Ecosystem
+            {t.impact.title}
           </h2>
           <p className="text-gray-600 text-lg font-light">
-            Through my role at Smart Africa and various initiatives, I focus on these key pillars to drive sustainable growth and impact.
+            {t.impact.subtitle}
           </p>
         </div>
 
