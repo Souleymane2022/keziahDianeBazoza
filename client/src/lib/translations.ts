@@ -50,6 +50,10 @@ export const translations = {
       readMore: "Read More",
       noNews: "No news updates available at the moment."
     },
+    gallery: {
+      label: "Gallery",
+      title: "Moments of Impact"
+    },
     footer: {
       title: "Let's Connect",
       subtitle: "Interested in collaborating on youth development, digital innovation, or entrepreneurship initiatives? I'd love to hear from you.",
@@ -136,6 +140,10 @@ export const translations = {
       title: "Actualités & Insights",
       readMore: "Lire la suite",
       noNews: "Aucune actualité disponible pour le moment."
+    },
+    gallery: {
+      label: "Galerie",
+      title: "Moments Marquants"
     },
     footer: {
       title: "Connectons-nous",

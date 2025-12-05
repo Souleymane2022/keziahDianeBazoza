@@ -6,6 +6,7 @@ import {
   CarouselNext, 
   CarouselPrevious 
 } from "@/components/ui/carousel";
+import { useLanguage } from "@/lib/language-context";
 import img1 from "@assets/images_(5)_1764904182439.jpeg";
 import img2 from "@assets/UniPod_42_1764904182501.JPG";
 import img3 from "@assets/UniPod_38_1764904182530.JPG";
@@ -21,6 +22,8 @@ const galleryImages = [
 ];
 
 export default function Gallery() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-24 bg-primary text-white overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
@@ -31,9 +34,9 @@ export default function Gallery() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h4 className="text-secondary font-bold tracking-widest uppercase text-sm mb-3">Gallery</h4>
+          <h4 className="text-secondary font-bold tracking-widest uppercase text-sm mb-3">{t.gallery.label}</h4>
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-white">
-            Moments of Impact
+            {t.gallery.title}
           </h2>
         </motion.div>
 
