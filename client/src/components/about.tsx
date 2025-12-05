@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/language-context";
-import portrait from "@assets/generated_images/professional_portrait_of_an_african_businesswoman.png";
+import portrait from "@assets/images_(4)_1764904182475.jpeg";
 import patternBg from "@assets/generated_images/subtle_geometric_pattern_background.png";
 import ReactMarkdown from 'react-markdown';
 

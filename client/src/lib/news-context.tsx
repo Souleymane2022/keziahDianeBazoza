@@ -1,5 +1,8 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { nanoid } from 'nanoid';
+import news1 from "@assets/UniPod_109_1764904182488.JPG";
+import news2 from "@assets/UniPod_124_1764904182480.JPG";
+import news3 from "@assets/UniPod_42_1764904182501.JPG";
 
 export type NewsItem = {
   id: string;
@@ -24,19 +27,27 @@ const NewsContext = createContext<NewsContextType | undefined>(undefined);
 const INITIAL_NEWS: NewsItem[] = [
   {
     id: '1',
-    title: "Smart Africa Launches New Youth Initiative",
-    excerpt: "A groundbreaking program designed to empower 10,000 young entrepreneurs across East Africa.",
+    title: "Empowering Youth Through Digital Innovation Hubs",
+    excerpt: "Engaging with the next generation of tech leaders at the latest UniPod event.",
     content: "Smart Africa has officially launched a new initiative aimed at bridging the digital divide...",
     date: "2025-05-15",
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2940&auto=format&fit=crop"
+    image: news1
   },
   {
     id: '2',
-    title: "Speaking at the African Tech Summit",
-    excerpt: "Discussing the future of digital infrastructure and policy harmonization in Kigali.",
+    title: "Strengthening Regional Partnerships",
+    excerpt: "Discussing the future of digital infrastructure and policy harmonization with key stakeholders.",
     content: "It was an honor to speak at the African Tech Summit this year, sharing insights on...",
     date: "2025-04-20",
-    image: "https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=2940&auto=format&fit=crop"
+    image: news2
+  },
+  {
+    id: '3',
+    title: "Workshop: Digital Strategies for SMEs",
+    excerpt: "Leading a session on how small businesses can leverage digital tools for growth.",
+    content: "A productive session with SME owners discussing practical steps for digital adoption...",
+    date: "2025-03-10",
+    image: news3
   }
 ];
 
