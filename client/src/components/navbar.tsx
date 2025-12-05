@@ -1,5 +1,5 @@
-import { Link } from "wouter";
-import { Menu, X, UserCircle } from "lucide-react";
+import { useLocation } from "wouter";
+import { Menu, UserCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -11,6 +11,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t } = useLanguage();
+  const [, setLocation] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,11 +47,12 @@ export default function Navbar() {
       )}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <Link href="/">
-          <a className="text-xl md:text-2xl font-serif font-bold text-primary tracking-tight flex items-center gap-2">
-            Diane K. Bazozah
-          </a>
-        </Link>
+        <button 
+          onClick={() => setLocation('/')}
+          className="text-xl md:text-2xl font-serif font-bold text-primary tracking-tight flex items-center gap-2 hover:opacity-80 transition-opacity"
+        >
+          Diane K. Bazozah
+        </button>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6">
@@ -68,11 +70,13 @@ export default function Navbar() {
           
           <LanguageToggle />
 
-          <Link href="/admin">
-            <a className="text-gray-400 hover:text-primary transition-colors" title={t.nav.admin}>
-              <UserCircle className="w-5 h-5" />
-            </a>
-          </Link>
+          <button
+            onClick={() => setLocation('/admin')}
+            className="text-gray-400 hover:text-primary transition-colors"
+            title={t.nav.admin}
+          >
+            <UserCircle className="w-5 h-5" />
+          </button>
           
           <Button 
             className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-medium rounded-none px-6 ml-2"
@@ -104,11 +108,12 @@ export default function Navbar() {
                 ))}
                 
                 <div className="flex gap-4 mt-4 border-t pt-6">
-                  <Link href="/admin">
-                    <a className="text-sm font-medium text-gray-500 hover:text-primary flex items-center gap-2">
-                       <UserCircle className="w-4 h-4" /> Admin Login
-                    </a>
-                  </Link>
+                  <button
+                    onClick={() => { setIsMobileMenuOpen(false); setLocation('/admin'); }}
+                    className="text-sm font-medium text-gray-500 hover:text-primary flex items-center gap-2"
+                  >
+                    <UserCircle className="w-4 h-4" /> Admin Login
+                  </button>
                 </div>
 
                 <Button 
